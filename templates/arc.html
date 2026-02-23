@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>發行外僑居留證 VC | 數位憑證發行端</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        /* Demo 按鈕樣式 - 更醒目、更大、輕微呼吸動畫 */
+        .demo-autofill-btn {
+            /* 保留毛玻璃效果 */
+            background: rgba(255,255,255,0.14);
+            -webkit-backdrop-filter: blur(6px);
+            backdrop-filter: blur(6px);
+            border: 2px solid rgba(255,255,255,0.9);
+            color: white;
+            transition: transform 0.16s ease, box-shadow 0.16s ease, background 0.16s ease;
+            box-shadow: 0 6px 18px rgba(13,110,253,0.12);
+            font-size: 1.05rem;
+            padding: 0.6rem 1.1rem;
+            border-radius: 12px;
+            backdrop-filter: blur(6px);
+        }
+
+        /* 更突出的變體 (在標題區域使用) */
+        .demo-autofill-prominent {
+            /* 半透明毛玻璃 (frosted glass) */
+            background: rgba(255,255,255,0.12);
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.28);
+            color: white;
+            box-shadow: 0 8px 24px rgba(13,110,253,0.12);
+            transform: translateY(0);
+            animation: pulse 2.6s ease-in-out infinite;
+        }
+
+        .demo-autofill-prominent:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 16px 40px rgba(13,110,253,0.18);
+            background: rgba(255,255,255,0.16);
+            filter: none;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 8px 20px rgba(13,110,253,0.18); }
+            50% { box-shadow: 0 14px 34px rgba(13,110,253,0.26); }
+            100% { box-shadow: 0 8px 20px rgba(13,110,253,0.18); }
+        }
+
+        .demo-autofill-btn .fa-magic { transform: translateY(0); transition: transform 0.2s ease; }
+        .demo-autofill-btn:hover .fa-magic { transform: translateY(-2px) rotate(-6deg); }
+    </style>
+</head>
+<body>
+    <div class="issue-hero">
+        <div class="hero-bg-decoration"></div>
+        <div class="container">
+            <div class="mb-2">
+                <a href="/" class="btn btn-light btn-lg">
+                    <i class="fas fa-arrow-left me-2"></i>返回首頁
+                </a>
+            </div>
+            <div class="text-center">
+                <h1 class="text-white fw-bold mb-2">
+                    <i class="fas fa-id-card me-2"></i>發行外僑居留證 VC
+                </h1>
+                <p class="text-white-50 small mb-0">填寫完整的居留證資料，為移工產生領取憑證的 QR Code</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0"><i class="fas fa-id-card me-2"></i>外僑居留證資料</h5>
+                        <button type="button" class="btn btn-lg demo-autofill-btn demo-autofill-prominent fw-bold" onclick="demoAutoFill()">
+                            <i class="fas fa-magic me-2"></i>
+                            <span style="letter-spacing:0.6px;">Demo 一鍵帶入</span>
+                        </button>
+                    </div>
+                    <div class="card-body p-4">
+                        <form id="arcForm" novalidate>
+                            <div class="row g-3">
+                                <div class="col-md-12">
+                                    <label class="form-label fw-bold">英文姓名 (Official English Name) <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" name="worker_name" placeholder="例如: ABC_DEF_GHI" required
+                                        pattern="[A-Za-z_]+" title="只能輸入英文和底線">
+                                    <small class="text-muted">格式: 英文和底線 (_)</small>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold">統一證號 (UI Number) <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" name="ui_num" placeholder="例: AC12345678" required
+                                        pattern="[A-Z]{2}[0-9]{8}" title="格式: 2個大寫英文+8個數字">
+                                    <small class="text-muted">格式: 2 個大寫英文字母 + 8 個數字</small>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold">卡片編號 (Card Number) <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" name="card_num" placeholder="例: A123456789" required
+                                        pattern="[A-Z][0-9]{9}" title="格式: 1個大寫英文+9個數字">
+                                    <small class="text-muted">格式: 1 個大寫英文字母 + 9 個數字</small>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold">核發日期 (Issue Date) <span class="text-danger">*</span></label>
+                                    <input type="date" class="form-control" name="issue_date" required>
+                                    <small class="text-muted">格式: YYYY-MM-DD</small>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold">居留期限 (Expiry Date) <span class="text-danger">*</span></label>
+                                    <input type="date" class="form-control" name="expiry_date" required>
+                                    <small class="text-muted">格式: YYYY-MM-DD</small>
+                                </div>
+                            </div>
+                            <div class="text-center mt-4">
+                                <button type="submit" class="btn btn-primary btn-lg px-5">
+                                    <i class="fas fa-qrcode me-2"></i>
+                                    產生 QR Code
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="qrModal" tabindex="-1" data-bs-backdrop="static">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="fas fa-check-circle text-success me-2"></i>
+                        憑證發行成功
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body text-center p-4">
+                    <div class="alert alert-info mb-4">
+                        <i class="fas fa-info-circle me-2"></i>
+                        請讓移工使用「台灣數位憑證皮夾 APP」掃描以下 QR Code 領取憑證
+                    </div>
+
+                    <div class="mb-3">
+                        <h6 class="text-muted">憑證類型</h6>
+                        <h4 id="vcTypeName" class="fw-bold"></h4>
+                    </div>
+
+                    <div class="qr-result-container mb-4">
+                        <div id="qrCodeDisplay"></div>
+                    </div>
+
+                    <div class="mb-3">
+                        <small class="text-muted">交易序號 (Transaction ID)</small>
+                        <div><code id="transactionId" class="fs-6"></code></div>
+                    </div>
+
+                    <div class="alert alert-warning">
+                        <i class="fas fa-clock me-2"></i>
+                        <strong>注意:</strong> QR Code 有效期限為 5 分鐘
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">DeepLink (可直接開啟 APP)</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="deepLinkUrl" readonly>
+                            <button class="btn btn-outline-primary" onclick="copyDeepLink()">
+                                <i class="fas fa-copy"></i> 複製
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
+                    <a href="/" class="btn btn-primary">
+                        <i class="fas fa-list me-2"></i>查看發行記錄
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container text-center">
+            <p class="mb-0">
+                <i class="fas fa-university me-2"></i>
+                數位憑證發行端系統
+            </p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/arc.js') }}"></script>
+    
+    <script>
+        // ===== Demo 一鍵帶入假資料 (暴力解鎖版) =====
+        function demoAutoFill() {
+            const dummyData = {
+                'worker_name': 'ABC_DEF_GHI',
+                'ui_num': 'AC12345678',
+                'card_num': 'A123456789',
+                'issue_date': '2023-01-01',
+                'expiry_date': '2028-12-31'
+            };
+            
+            for (const [name, value] of Object.entries(dummyData)) {
+                const el = document.querySelector(`input[name="${name}"]`);
+                if (el) {
+                    el.value = value;
+                    // 加入 bubbles: true，讓事件可以傳遞給外部的 JS
+                    el.dispatchEvent(new Event('input', { bubbles: true }));
+                    el.dispatchEvent(new Event('change', { bubbles: true }));
+                }
+            }
+
+            // 【終極暴力解鎖】直接把 Submit 按鈕的限制拿掉！
+            const form = document.getElementById('arcForm');
+            const submitBtn = form.querySelector('button[type="submit"]');
+            if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.classList.remove('disabled', 'btn-disabled-look');
+            }
+            // 讓欄位全部亮起綠色的勾勾
+            form.classList.add('was-validated');
+        }
+    </script>
+</body>
+</html>

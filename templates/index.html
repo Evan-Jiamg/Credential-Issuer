@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>數位憑證發行端 | Digital Credential Issuer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <div class="container text-center text-white">
+            <h1 class="display-3 fw-bold mb-3">
+                <i class="fas fa-certificate me-3"></i>
+                數位憑證發行端系統
+            </h1>
+            <p class="lead text-white-50">Digital Credential Issuer</p>
+        </div>
+    </div>
+
+    <!-- 快速流程與系統特色 -->
+    <div class="container mt-n5 mb-3">
+        <div class="row align-items-center mb-3">
+            <div class="col-md-6 mb-3 mb-md-0">
+                <div class="process-flow-inline">
+                    <div class="text-dark d-block mb-3 fw-bold fs-5">快速上手流程</div>
+                    <div class="row g-3">
+                        <div class="col-6">
+                            <div class="d-flex align-items-center">
+                                <div class="process-number me-2">1</div>
+                                <i class="fas fa-list fa-2x text-primary me-3"></i>
+                                <div>
+                                    <div class="fw-bold">選擇憑證</div>
+                                    <small class="text-muted">點擊憑證類型</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="d-flex align-items-center">
+                                <div class="process-number me-2">2</div>
+                                <i class="fas fa-edit fa-2x text-primary me-3"></i>
+                                <div>
+                                    <div class="fw-bold">填寫資料</div>
+                                    <small class="text-muted">輸入完整資訊</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="d-flex align-items-center">
+                                <div class="process-number me-2">3</div>
+                                <i class="fas fa-qrcode fa-2x text-primary me-3"></i>
+                                <div>
+                                    <div class="fw-bold">產生 QR Code</div>
+                                    <small class="text-muted">即時生成憑證</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="d-flex align-items-center">
+                                <div class="process-number me-2">4</div>
+                                <i class="fas fa-mobile-alt fa-2x text-primary me-3"></i>
+                                <div>
+                                    <div class="fw-bold">移工領取</div>
+                                    <small class="text-muted">掃描 QR 領取</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="process-flow-inline">
+                    <div class="text-dark d-block mb-3 fw-bold fs-5">系統特色</div>
+                    <div class="row g-3">
+                        <div class="col-6">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-shield-alt fa-2x text-primary me-3"></i>
+                                <div>
+                                    <div class="fw-bold">安全可靠</div>
+                                    <small class="text-muted">數位簽章技術</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-bolt fa-2x text-warning me-3"></i>
+                                <div>
+                                    <div class="fw-bold">快速發行</div>
+                                    <small class="text-muted">即時產生 QR Code</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-globe fa-2x text-success me-3"></i>
+                                <div>
+                                    <div class="fw-bold">國際標準</div>
+                                    <small class="text-muted">OID4VCI 規範</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-mobile-alt fa-2x text-info me-3"></i>
+                                <div>
+                                    <div class="fw-bold">APP 整合</div>
+                                    <small class="text-muted">數位憑證皮夾</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 憑證類型選擇按鈕 -->
+        <div class="row g-4 mb-4">
+            <div class="col-md-6">
+                <div class="credential-selection-single">
+                    <a href="/issue/arc" class="credential-btn credential-btn-primary">
+                        <div class="credential-icon">
+                            <i class="fas fa-id-card"></i>
+                        </div>
+                        <div class="credential-content">
+                            <h4 class="mb-2">外僑居留證 VC</h4>
+                            <p class="text-muted mb-3">發行包含居留證資訊的數位憑證，方便身分驗證</p>
+                            <ul class="feature-list-inline">
+                                <li><i class="fas fa-check-circle text-primary me-2"></i>統一證號 (UI Number)</li>
+                                <li><i class="fas fa-check-circle text-primary me-2"></i>核發日期</li>
+                                <li><i class="fas fa-check-circle text-primary me-2"></i>效期截止日</li>
+                                <li><i class="fas fa-check-circle text-primary me-2"></i>卡片編號</li>
+                                <li><i class="fas fa-check-circle text-primary me-2"></i>有效期限 1 年</li>
+                            </ul>
+                        </div>
+                        <div class="credential-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="credential-selection-single">
+                    <a href="/issue/contract" class="credential-btn credential-btn-success">
+                        <div class="credential-icon">
+                            <i class="fas fa-file-contract"></i>
+                        </div>
+                        <div class="credential-content">
+                            <h4 class="mb-2">移工勞動契約 VC</h4>
+                            <p class="text-muted mb-3">發行包含工作資訊、薪資、雇主等完整契約內容的數位憑證</p>
+                            <ul class="feature-list-inline">
+                                <li><i class="fas fa-check-circle text-success me-2"></i>移工姓名與職位</li>
+                                <li><i class="fas fa-check-circle text-success me-2"></i>公司名稱、地址、電話</li>
+                                <li><i class="fas fa-check-circle text-success me-2"></i>月薪資訊</li>
+                                <li><i class="fas fa-check-circle text-success me-2"></i>人力仲介資訊</li>
+                                <li><i class="fas fa-check-circle text-success me-2"></i>有效期限 1 年</li>
+                            </ul>
+                        </div>
+                        <div class="credential-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 發行記錄（完整版） -->
+    <div class="container mb-5">
+        <div class="card shadow-sm">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0 d-flex align-items-center">
+                    <i class="fas fa-list me-2"></i>
+                    所有發行記錄
+                    <button class="refresh-btn ms-3" onclick="loadRecords()" title="刷新記錄">
+                        <i class="fas fa-sync-alt text-white"></i>
+                    </button>
+                </h5>
+            </div>
+            <div class="card-body p-0">
+                <div id="recordsContainer" style="max-height: 500px; overflow-y: auto;">
+                    <div class="text-center py-5">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">載入中...</span>
+                        </div>
+                        <p class="mt-3 text-muted">正在載入記錄...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="alert alert-info mt-3">
+            <i class="fas fa-info-circle me-2"></i>
+            <strong>注意:</strong> 本系統目前使用 Session 儲存記錄，關閉瀏覽器後記錄將清除。
+        </div>
+    </div>
+
+    <!-- 詳細資料 Modal -->
+    <div class="modal fade" id="detailModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="fas fa-info-circle me-2"></i>
+                        憑證詳細資料
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="detailContent">
+                    <!-- 動態填充 -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container text-center">
+            <p class="mb-2">
+                <i class="fas fa-university me-2"></i>
+                數位憑證發行端系統
+            </p>
+            <p class="mb-0 small text-muted">
+                採用 OID4VCI 標準 | 整合台灣數位憑證皮夾 | 連接 MODA 沙盒環境
+            </p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    // 載入發行記錄（完整版）
+    async function loadRecords() {
+        try {
+            const response = await fetch('/api/get_issuance_records');
+            const result = await response.json();
+
+            if (result.success) {
+                displayRecords(result.records);
+            } else {
+                showError('載入記錄失敗: ' + result.error);
+            }
+        } catch (error) {
+            console.error('載入記錄錯誤:', error);
+            showError('系統錯誤: ' + error.message);
+        }
+    }
+
+    // 顯示記錄列表
+    function displayRecords(records) {
+        const container = document.getElementById('recordsContainer');
+
+        if (!records || records.length === 0) {
+            container.innerHTML = `
+                <div class="empty-state py-5 text-center">
+                    <i class="fas fa-inbox fa-3x text-muted mb-3"></i>
+                    <h5 class="text-muted">尚無發行記錄</h5>
+                    <p class="text-muted">您還沒有發行任何憑證</p>
+                </div>
+            `;
+            return;
+        }
+
+        // 按時間倒序排列
+        records.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+
+        let html = '<div class="list-group list-group-flush">';
+
+        records.forEach((record, index) => {
+            const timestamp = new Date(record.timestamp).toLocaleString('zh-TW', {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            });
+
+            const badgeClass = record.vc_type === 'contract' ? 'bg-success' : 'bg-primary';
+            const icon = record.vc_type === 'contract' ? 'fa-file-contract' : 'fa-id-card';
+
+            html += `
+                <div class="list-group-item">
+                    <div class="d-flex w-100 justify-content-between align-items-start">
+                        <div class="flex-grow-1">
+                            <h5 class="mb-2">
+                                <i class="fas ${icon} me-2"></i>
+                                ${record.vc_name}
+                                <span class="badge ${badgeClass} ms-2">${record.vc_type.toUpperCase()}</span>
+                            </h5>
+                            <p class="mb-1">
+                                <strong>交易序號:</strong>
+                                <code>${record.transaction_id}</code>
+                            </p>
+                            <p class="mb-0 text-muted small">
+                                <i class="fas fa-clock me-1"></i>
+                                ${timestamp}
+                            </p>
+                        </div>
+                        <div>
+                            <button class="btn btn-sm btn-outline-primary" onclick="showDetail(${index})">
+                                <i class="fas fa-eye me-1"></i>詳細
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+
+        html += '</div>';
+        container.innerHTML = html;
+    }
+
+    // 顯示詳細資料
+    function showDetail(index) {
+        fetch('/api/get_issuance_records')
+            .then(r => r.json())
+            .then(result => {
+                if (result.success && result.records[index]) {
+                    const record = result.records[index];
+                    displayDetailModal(record);
+                }
+            });
+    }
+
+    // 顯示詳細資料 Modal
+    function displayDetailModal(record) {
+        const timestamp = new Date(record.timestamp).toLocaleString('zh-TW', {
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit'
+        });
+
+        let dataHtml = '<div class="table-responsive"><table class="table table-bordered">';
+
+        for (const [key, value] of Object.entries(record.personal_data)) {
+            const displayKey = formatFieldName(key);
+            dataHtml += `
+                <tr>
+                    <th class="bg-light" style="width: 40%;">${displayKey}</th>
+                    <td>${value}</td>
+                </tr>
+            `;
+        }
+
+        dataHtml += '</table></div>';
+
+        const content = `
+            <div class="mb-3">
+                <h6 class="text-muted">憑證類型</h6>
+                <h5>${record.vc_name}</h5>
+            </div>
+
+            <div class="mb-3">
+                <h6 class="text-muted">交易序號</h6>
+                <code class="fs-6">${record.transaction_id}</code>
+            </div>
+
+            <div class="mb-3">
+                <h6 class="text-muted">發行時間</h6>
+                <p>${timestamp}</p>
+            </div>
+
+            <div class="mb-3">
+                <h6 class="text-muted">憑證資料</h6>
+                ${dataHtml}
+            </div>
+        `;
+
+        document.getElementById('detailContent').innerHTML = content;
+
+        const modal = new bootstrap.Modal(document.getElementById('detailModal'));
+        modal.show();
+    }
+
+    // 格式化欄位名稱
+    function formatFieldName(key) {
+        const fieldNames = {
+            'worker_name': '移工姓名',
+            'company_name': '公司名稱',
+            'company_telephone': '公司電話',
+            'company_address': '公司地址',
+            'job_title': '職位名稱',
+            'monthly_wages': '月薪',
+            'contract_expiry': '契約到期時間',
+            'agency_name': '仲介公司名稱',
+            'agency_telephone': '仲介電話',
+            'ui_num': '統一證號',
+            'issue_date': '核發日期',
+            'expiry_date': '效期截止日',
+            'card_num': '卡片號碼'
+        };
+
+        return fieldNames[key] || key;
+    }
+
+    // 顯示錯誤訊息
+    function showError(message) {
+        const container = document.getElementById('recordsContainer');
+        container.innerHTML = `
+            <div class="alert alert-danger m-3">
+                <i class="fas fa-exclamation-triangle me-2"></i>
+                ${message}
+            </div>
+        `;
+    }
+
+    // 頁面載入時取得記錄
+    document.addEventListener('DOMContentLoaded', loadRecords);
+    </script>
+</body>
+</html>

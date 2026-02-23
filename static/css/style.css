@@ -1,0 +1,809 @@
+/* 數位憑證發行端系統 - 主樣式表 */
+
+body {
+    font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background-color: #f8f9fa;
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(135deg, #0d6efd 0%, #0dcaf0 100%);
+    padding: 30px 0 30px;
+    margin-bottom: 30px;
+    border-radius: 0 0 50px 50px;
+    box-shadow: 0 10px 30px rgba(13, 110, 253, 0.16);
+}
+
+.hero-section h1 {
+    font-size: 5rem;
+}
+
+.hero-section .lead {
+    font-size: 1.3rem;
+    opacity: 0.9;
+}
+
+/* 系統特色快速導航 */
+.feature-nav {
+    background: white;
+    padding: 25px 0;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.feature-nav-item {
+    text-align: center;
+    padding: 15px;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+}
+
+.feature-nav-item:hover {
+    color: #0d6efd;
+    transform: translateY(-2px);
+}
+
+.feature-nav-item i {
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+    display: block;
+    color: #0d6efd;
+}
+
+.feature-nav-item p {
+    font-size: 0.9rem;
+    margin-bottom: 0;
+    color: #666;
+}
+
+.hero-section h1 {
+    font-size: 2rem;
+}
+
+.hero-section p {
+    font-size: 1rem;
+    margin-bottom: 0;
+}
+
+/* 系統特色快速導航 */
+.feature-nav {
+    background: white;
+    padding: 25px 0;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.feature-nav-item {
+    text-align: center;
+    padding: 15px;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+}
+
+.feature-nav-item:hover {
+    color: #0d6efd;
+    transform: translateY(-2px);
+}
+
+.feature-nav-item i {
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+    display: block;
+    color: #0d6efd;
+}
+
+.feature-nav-item p {
+    font-size: 0.9rem;
+    margin-bottom: 0;
+    color: #666;
+}
+
+/* 功能卡片 */
+.feature-card {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.feature-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.feature-list li {
+    padding: 8px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.feature-list li:last-child {
+    border-bottom: none;
+}
+
+/* 步驟編號 */
+.step-number {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #0d6efd 0%, #0dcaf0 100%);
+    color: white;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+/* 使用流程（圖示 + 說明） */
+.usage-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.usage-icon {
+    width: 56px;
+    height: 56px;
+    background: #ffffff;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    color: #0d6efd;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+    margin-bottom: 8px;
+}
+
+/* 緊湊版使用流程 */
+.process-flow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding: 2rem 1rem;
+    background: linear-gradient(135deg, rgba(13, 110, 253, 0.03) 0%, rgba(13, 202, 240, 0.03) 100%);
+    border-radius: 15px;
+}
+
+.process-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+.process-step:hover {
+    transform: translateY(-3px);
+}
+
+.process-icon {
+    width: 50px;
+    height: 50px;
+    background: white;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    color: #0d6efd;
+    box-shadow: 0 4px 12px rgba(13, 110, 253, 0.15);
+    transition: all 0.3s ease;
+}
+
+.process-step:hover .process-icon {
+    background: linear-gradient(135deg, #0d6efd, #0dcaf0);
+    color: white;
+    box-shadow: 0 6px 16px rgba(13, 110, 253, 0.3);
+}
+
+.process-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #495057;
+    white-space: nowrap;
+}
+
+.process-arrow {
+    font-size: 1.2rem;
+    color: #0d6efd;
+    opacity: 0.5;
+    margin: 0 0.5rem;
+}
+
+/* 響應式：手機版改為垂直排列 */
+@media (max-width: 768px) {
+    .process-flow {
+        flex-direction: column;
+        gap: 0.8rem;
+        padding: 1.5rem 1rem;
+    }
+
+    .process-arrow {
+        transform: rotate(90deg);
+        margin: 0;
+    }
+}
+
+/* 迷你流程（首頁頂部並排） */
+.process-flow-inline {
+    background: linear-gradient(135deg, rgba(13, 110, 253, 0.05) 0%, rgba(13, 202, 240, 0.05) 100%);
+    padding: 1.25rem;
+    border-radius: 12px;
+    border-left: 4px solid #0d6efd;
+}
+
+/* 流程編號 */
+.process-number {
+    color: #0d6efd;
+    font-weight: bold;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    margin-right: 1000rem;
+}
+
+.process-step-mini {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.95rem;
+    color: #212529;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.process-step-mini i {
+    color: #0d6efd;
+    font-size: 1.1rem;
+}
+
+/* 憑證選擇按鈕 */
+.credential-selection {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.credential-selection-single {
+    height: 100%;
+}
+
+.credential-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.5rem;
+    padding: 2rem;
+    background: white;
+    border-radius: 15px;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    height: 100%;
+}
+
+.credential-btn:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.credential-btn-primary:hover {
+    border-color: #0d6efd;
+    background: linear-gradient(135deg, rgba(13, 110, 253, 0.03) 0%, rgba(13, 202, 240, 0.03) 100%);
+}
+
+.credential-btn-success:hover {
+    border-color: #198754;
+    background: linear-gradient(135deg, rgba(25, 135, 84, 0.03) 0%, rgba(40, 167, 69, 0.03) 100%);
+}
+
+.credential-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+
+.credential-btn-primary .credential-icon {
+    background: linear-gradient(135deg, #0d6efd, #0dcaf0);
+    color: white;
+}
+
+.credential-btn-success .credential-icon {
+    background: linear-gradient(135deg, #198754, #28a745);
+    color: white;
+}
+
+.credential-content {
+    flex: 1;
+}
+
+.credential-content h4 {
+    font-weight: 600;
+    color: #212529;
+    font-size: 1.4rem;
+}
+
+.credential-content p {
+    color: #6c757d;
+    font-size: 0.95rem;
+}
+
+/* 特色列表（內聯版） */
+.feature-list-inline {
+    list-style: none;
+    padding: 1rem 1.25rem;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    text-align: left;
+    border: 2px solid rgba(13, 110, 253, 0.15);
+    border-radius: 10px;
+    background: linear-gradient(135deg, rgba(13, 110, 253, 0.03) 0%, rgba(13, 202, 240, 0.03) 100%);
+}
+
+.feature-list-inline li {
+    font-size: 0.9rem;
+    color: #495057;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.feature-list-inline i {
+    flex-shrink: 0;
+}
+
+.credential-arrow {
+    font-size: 1.8rem;
+    color: #0d6efd;
+    opacity: 0.4;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.credential-btn:hover .credential-arrow {
+    opacity: 1;
+    transform: translateY(5px);
+}
+
+/* 響應式 */
+@media (max-width: 768px) {
+    .process-flow-inline {
+        margin-top: 1rem;
+    }
+
+    .process-step-mini {
+        font-size: 0.85rem;
+    }
+
+    .credential-btn {
+        padding: 1.5rem;
+    }
+
+    .credential-content h4 {
+        font-size: 1.2rem;
+    }
+
+    .feature-list-inline li {
+        justify-content: flex-start;
+    }
+
+    .credential-btn:hover .credential-arrow {
+        transform: translateY(5px);
+    }
+}
+
+/* QR Code 結果容器 */
+.qr-result-container {
+    background: #f8f9fa;
+    border-radius: 15px;
+    padding: 30px;
+    display: inline-block;
+}
+
+#qrCodeDisplay {
+    display: inline-block;
+}
+
+#qrCodeDisplay img {
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* 表單樣式增強 */
+.form-label {
+    margin-bottom: 0.5rem;
+    color: #495057;
+    font-weight: 500;
+}
+
+.form-control,
+.form-select {
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 12px 15px;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.15);
+}
+
+/* 卡片樣式 */
+.card {
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.card-header {
+    border-bottom: none;
+    padding: 20px;
+}
+
+/* 按鈕樣式增強 */
+.btn {
+    border-radius: 10px;
+    padding: 10px 25px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-lg {
+    padding: 15px 40px;
+    font-size: 1.1rem;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.usage-step:hover .usage-icon {
+    background: linear-gradient(135deg, #0d6efd, #0dcaf0);
+    color: #fff;
+}
+
+.usage-step:hover .step-number {
+    transform: scale(1.05);
+}
+
+.usage-step::after {
+    content: "";
+    position: absolute;
+    top: 30px;
+    right: -40px;
+    width: 80px;
+    height: 2px;
+    background: linear-gradient(
+        to right,
+        rgba(102,126,234,0.4),
+        rgba(102,126,234,0)
+    );
+}
+
+.usage-step:last-child::after {
+    display: none;
+}
+
+/* 導航欄樣式 */
+.navbar {
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+/* 記錄卡片 */
+.record-card {
+    border-left: 4px solid #0d6efd;
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+}
+
+.record-card:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transform: translateX(5px);
+}
+
+/* 記錄列表項目 */
+.list-group-item {
+    transition: all 0.2s ease;
+    border-left: 3px solid transparent;
+}
+
+.list-group-item:hover {
+    background-color: #f8f9fa;
+    border-left-color: #0d6efd;
+}
+
+/* 空狀態 */
+.empty-state {
+    padding: 3rem 1rem;
+}
+
+.empty-state i {
+    opacity: 0.3;
+}
+
+.record-badge {
+    display: inline-block;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+
+.record-badge.contract {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.record-badge.arc {
+    background-color: #d1ecf1;
+    color: #0c5460;
+}
+
+/* 時間戳記樣式 */
+.timestamp {
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+/* 空狀態樣式 */
+.empty-state {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.empty-state i {
+    font-size: 4rem;
+    color: #dee2e6;
+    margin-bottom: 20px;
+}
+
+/* Tab 樣式 */
+.nav-pills .nav-link {
+    border-radius: 10px;
+    padding: 12px 20px;
+    transition: all 0.3s ease;
+}
+
+.nav-pills .nav-link:hover {
+    background-color: #f8f9fa;
+}
+
+.nav-pills .nav-link.active {
+    background: linear-gradient(135deg, #0d6efd 0%, #0dcaf0 100%);
+}
+
+/* Issue 和 Query 頁面 Hero */
+.issue-hero {
+    background: linear-gradient(135deg, #0d6efd 0%, #0dcaf0 100%);
+    padding: 20px 0;
+    margin-bottom: 30px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 0 0 50px 50px;
+    box-shadow: 0 10px 30px rgba(13, 110, 253, 0.16);
+}
+
+.query-hero {
+    background: linear-gradient(135deg, #17a2b8 0%, #0c5460 100%);
+    padding: 20px 0;
+    margin-bottom: 30px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-bg-decoration {
+    position: absolute;
+    top: -50%;
+    right: -50px;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    z-index: 0;
+}
+
+.issue-hero > .container,
+.query-hero > .container {
+    position: relative;
+    z-index: 1;
+}
+
+/* 強化卡片設計 */
+.card {
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+.card-header {
+    border-bottom: none;
+    color: white;
+    padding: 20px;
+}
+
+.card-header.bg-primary {
+    background: linear-gradient(135deg, #0d6efd 0%, #0dcaf0 100%) !important;
+}
+
+.card-header.bg-success {
+    background: linear-gradient(135deg, #198754 0%, #28a745 100%) !important;
+}
+
+/* 刷新按钮毛玻璃效果 */
+.refresh-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.refresh-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: rotate(180deg);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+/* 自定義 Tab 按鈕樣式 */
+.nav-link {
+    border-radius: 10px !important;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    padding: 10px 18px !important;
+}
+
+.nav-link-contract {
+    color: #28a745 !important;
+    background-color: #ffffff !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border: none;
+}
+
+.nav-link-contract:hover,
+.nav-link-contract.active {
+    color: #ffffff !important;
+    background-color: #28a745 !important;
+    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+}
+
+.nav-link-arc {
+    color: #007bff !important;
+    background-color: #ffffff !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border: none;
+}
+
+.nav-link-arc:hover,
+.nav-link-arc.active {
+    color: #ffffff !important;
+    background-color: #007bff !important;
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+}
+/* 響應式調整 */
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 30px 0 50px;
+    }
+
+    .hero-section h1 {
+        font-size: 2.5rem;
+    }
+    
+    .feature-nav-item {
+        padding: 10px 5px;
+    }
+    
+    .feature-nav-item i {
+        font-size: 1.5rem;
+    }
+    
+    /* 行動裝置按鈕與卡片空間調整 */
+    .btn-lg {
+        padding: 10px 18px;
+        font-size: 1rem;
+    }
+
+    .feature-card {
+        padding: 20px;
+    }
+
+    .step-number {
+        width: 48px;
+        height: 48px;
+        font-size: 1.1rem;
+    }
+
+    .usage-icon {
+        width: 48px;
+        height: 48px;
+        font-size: 1.1rem;
+    }
+    
+    .feature-nav-item {
+        padding: 10px 5px;
+    }
+    
+    .feature-nav-item i {
+        font-size: 1.5rem;
+    }
+    
+    .feature-card {
+        margin-bottom: 20px;
+    }
+    
+    .step-number {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+}
+
+/* 表單驗證樣式 */
+.was-validated .form-control:invalid {
+    border-color: #dc3545;
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}
+
+.was-validated .form-control:valid {
+    border-color: #198754;
+}
+
+/* 表單未填完時，送出按鈕變灰 */
+.btn-submit-disabled {
+    background-color: #adb5bd !important;
+    border-color: #adb5bd !important;
+    color: #fff !important;
+    cursor: not-allowed;
+    opacity: 0.65;
+    transform: none !important;
+    box-shadow: none !important;
+}
