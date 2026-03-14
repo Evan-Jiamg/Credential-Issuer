@@ -7,7 +7,6 @@
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg" height="45"/> Flask &nbsp;&nbsp;
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" height="45"/> HTML5 &nbsp;&nbsp;
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg" height="45"/> Vercel &nbsp;&nbsp;
-  <span style="font-size:18px;">🔐 OID4VCI / OID4VP</span>
 </p>
 
 ## Overview
